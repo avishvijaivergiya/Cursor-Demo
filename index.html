@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Accordion Group Component</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+  <style>
+    .control-panel {
+      max-width: 500px;
+      margin: 20px auto;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    .control-group {
+      margin-bottom: 15px;
+    }
+
+    .control-group h3 {
+      margin: 0 0 10px 0;
+      font-size: 14px;
+      color: #333;
+    }
+
+    .toggle-controls {
+      display: flex;
+      gap: 15px;
+    }
+
+    .toggle-button {
+      padding: 8px 16px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      background: #fff;
+      cursor: pointer;
+      font-family: 'Montserrat', sans-serif;
+      transition: all 0.2s ease;
+    }
+
+    .toggle-button.active {
+      background: #333;
+      color: white;
+      border-color: #333;
+    }
+
+    .number-control {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .number-control button {
+      width: 30px;
+      height: 30px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      background: #fff;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .number-display {
+      min-width: 30px;
+      text-align: center;
+    }
+
+    .material-symbols-rounded {
+      font-variation-settings:
+      'FILL' 0,
+      'wght' 400,
+      'GRAD' 0,
+      'opsz' 40
+    }
+  </style>
+</head>
+<body>
+  <div class="control-panel">
+    <div class="control-group">
+      <h3>Number of Accordions</h3>
+      <div class="number-control">
+        <button onclick="updateAccordionCount(-1)">-</button>
+        <span class="number-display" id="accordion-count">3</span>
+        <button onclick="updateAccordionCount(1)">+</button>
+      </div>
+    </div>
+    <div class="control-group">
+      <h3>Global Features</h3>
+      <div class="toggle-controls">
+        <button class="toggle-button active" onclick="toggleFeature('showIcon')">Icon</button>
+      </div>
+    </div>
+    <div class="control-group" id="accordion-texts">
+      <h3>Accordion Settings</h3>
+      <div class="accordion-text-controls">
+        <!-- Dynamically populated by JavaScript -->
+      </div>
+    </div>
+  </div>
+  <div id="accordion-container"></div>
+
+  <script src="script.js"></script>
+  <script>
+    // Example usage
+    const accordionGroup = new AccordionGroup({
+      numberOfAccordions: 3, // default is 3
+      accordionConfigs: [
+        {
+          showButton: true,
+          showIcon: true,
+          showSubheading: true,
+          heading: 'First Accordion',
+          subheading: 'Custom Subheading 1',
+          content: 'Custom content for first accordion'
+        },
+        {
+          showButton: true,
+          showIcon: false,
+          showSubheading: true,
+          heading: 'Second Accordion',
+          subheading: 'Custom Subheading 2',
+          content: 'Custom content for second accordion'
+        },
+        {
+          showButton: false,
+          showIcon: true,
+          showSubheading: false,
+          heading: 'Third Accordion',
+          content: 'Custom content for third accordion'
+        }
+      ]
+    });
+  </script>
+</body>
+</html> 
