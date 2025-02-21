@@ -1,9 +1,9 @@
 class Accordion {
   constructor(config = {}, id) {
     this.config = {
-      showButton: config.showButton ?? false,
+      showButton: config.showButton ?? true,
       showIcon: config.showIcon ?? true,
-      showSubheading: config.showSubheading ?? false,
+      showSubheading: config.showSubheading ?? true,
       heading: config.heading ?? 'Accordion Heading',
       subheading: config.subheading ?? 'Accordion Subheading',
       buttonLabel: config.buttonLabel ?? 'label',
@@ -106,6 +106,7 @@ let currentConfig = {
       subheading: 'First Subheading',
       buttonLabel: 'label',
       showButton: true,
+      showIcon: true,
       showSubheading: true
     },
     {
@@ -113,6 +114,7 @@ let currentConfig = {
       subheading: 'Second Subheading',
       buttonLabel: 'label',
       showButton: true,
+      showIcon: true,
       showSubheading: true
     },
     {
@@ -120,6 +122,7 @@ let currentConfig = {
       subheading: 'Third Subheading',
       buttonLabel: 'label',
       showButton: true,
+      showIcon: true,
       showSubheading: true
     }
   ]
@@ -198,6 +201,7 @@ function updateAccordionCount(change) {
         subheading: `Subheading ${i + 1}`,
         buttonLabel: 'label',
         showButton: true,
+        showIcon: true,
         showSubheading: true
       });
     }
@@ -225,3 +229,34 @@ function updateAccordionText(index, field, value) {
 
 // Initial render
 renderAccordions();
+
+// Example usage configuration at the bottom of script.js
+const accordionGroup = new AccordionGroup({
+  numberOfAccordions: 3,
+  accordionConfigs: [
+    {
+      showButton: true,
+      showIcon: true,
+      showSubheading: true,
+      heading: 'First Accordion',
+      subheading: 'Custom Subheading 1',
+      content: 'Custom content for first accordion'
+    },
+    {
+      showButton: true,
+      showIcon: true,
+      showSubheading: true,
+      heading: 'Second Accordion',
+      subheading: 'Custom Subheading 2',
+      content: 'Custom content for second accordion'
+    },
+    {
+      showButton: true,        // Changed from false to true
+      showIcon: true,
+      showSubheading: true,    // Changed from false to true
+      heading: 'Third Accordion',
+      subheading: 'Custom Subheading 3',  // Added subheading
+      content: 'Custom content for third accordion'
+    }
+  ]
+});
